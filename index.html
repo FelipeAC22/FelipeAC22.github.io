@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #fff 3px solid;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .menu-item {
+            background: #fead2b;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .menu-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .menu-item h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        #order-form {
+            margin: 20px 0;
+            padding: 20px;
+            background: #fead2b;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #order-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        #order-form input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #333;
+        }
+        #order-form input[type="button"] {
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #order-form input[type="button"]:hover {
+            background: #fead2b;
+        }
+        #message {
+            margin: 20px 0;
+            padding: 20px;
+            background: #fead2b;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Cardápio</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="menu-item">
+            <h2>Churrasco</h2>
+            <img src="imagens1/churrasco.jpg" alt="Churrasco">
+            <p>O famoso estilo de assar carne em espetos, geralmente acompanhado de chimichurri e outros acompanhamentos.</p>
+        </div>
+
+        <div class="menu-item">
+            <h2>Arroz com Feijão</h2>
+            <img src="imagens1/arroz_feijao.jpg" alt="Arroz com Feijão">
+            <p>Embora comum em todo o Brasil, é preparado com um toque especial no Sul.</p>
+        </div>
+
+        <div class="menu-item">
+            <h2>Feijão Tropeiro</h2>
+            <img src="imagens1/feijao_tropeiro.jpg" alt="Feijão Tropeiro">
+            <p>Um prato típico feito com feijão, arroz, carne seca, bacon e temperos.</p>
+        </div>
+
+        <div class="menu-item">
+            <h2>Cuca</h2>
+            <img src="imagens1/cuca.jpg" alt="Cuca">
+            <p>Um bolo de origem alemã com cobertura de farofa de açúcar e canela.</p>
+        </div>
+
+        <div class="menu-item">
+            <h2>Mate</h2>
+            <img src="imagens1/mate.jpg" alt="Mate">
+            <p>Bebida tradicional feita com erva-mate, consumida em chimas (chimarrão) ou em termos (tereré).</p>
+        </div>
+
+        <div class="menu-item">
+            <h2>Pinhão</h2>
+            <img src="imagens1/pinhao.jpg" alt="Pinhão">
+            <p>Semente de pinheiro, frequentemente assada e consumida como petisco.</p>
+        </div>
+
+        <div class="menu-item">
+            <h2>Galeto ao Primo Canto</h2>
+            <img src="imagens1/galeto.jpg" alt="Galeto ao Primo Canto">
+            <p>Galeto assado, típico das festas e reuniões.</p>
+        </div>
+
+        <div class="menu-item">
+            <h2>Polenta</h2>
+            <img src="imagens1/polenta.jpg" alt="Polenta">
+            <p>Prato à base de milho, que pode ser servido de várias maneiras, como frita ou cremosa.</p>
+        </div>
+
+        <div class="menu-item">
+            <h2>Vinho</h2>
+            <img src="imagens1/vinho.jpg" alt="Vinho">
+            <p>A região também é conhecida pela produção de vinhos, especialmente na Serra Gaúcha.</p>
+        </div>
+
+        <div class="menu-item">
+            <h2>Sopa de Pedra</h2>
+            <img src="imagens1/sopa_pedra.jpg" alt="Sopa de Pedra">
+            <p>Prato tradicional que pode variar, mas geralmente inclui carne, legumes e temperos.</p>
+        </div>
+
+        <div id="order-form">
+            <label for="order">Faça seu pedido:</label>
+            <input type="text" id="order" placeholder="Digite o nome do prato" />
+            <input type="button" value="Enviar Pedido" onclick="submitOrder()" />
+        </div>
+
+        <div id="message"></div>
+    </div>
+
+    <script>
+        function submitOrder() {
+            const order = document.getElementById('order').value.trim().toUpperCase();
+            const messageDiv = document.getElementById('message');
+
+            switch (order) {
+                case "CHURRASCO":
+                case "ARROZ COM FEIJAO":
+                case "FEIJAO TROPEIRO":
+                case "CUCA":
+                case "MATE":
+                case "PINHAO":
+                case "GALETO AO PRIMO CANTO":
+                case "POLENTA":
+                case "VINHO":
+                case "SOPA DE PEDRA":
+                    messageDiv.textContent = `Seu pedido foi feito! Seu pedido está sendo preparado.`;
+                    break;
+                default:
+                    messageDiv.textContent = `Desculpe, não reconhecemos esse item no cardápio.`;
+            }
+        }
+    </script>
+</body>
+</html>
